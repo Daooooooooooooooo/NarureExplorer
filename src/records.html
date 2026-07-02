@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Records - Nature Explorer Songkhla</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="page-header">
+      <span class="step-number">6</span>
+      <p class="eyebrow">Explorer progress</p>
+      <h1>Show Records</h1>
+    </header>
+
+    <nav class="app-nav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="map.html">Map</a>
+      <a href="naturedex.html">NatureDex</a>
+      <a href="upload.html">Upload</a>
+      <a href="records.html">Records</a>
+    </nav>
+
+    <main class="page-main">
+      <section class="panel page-panel" aria-labelledby="recordsTitle">
+        <span class="step-number">6</span>
+        <h2 id="recordsTitle">Records</h2>
+        <div class="record-summary">
+          <strong id="totalFound">0</strong>
+          <span>species found</span>
+        </div>
+        <div class="summary-grid" aria-label="Record summaries">
+          <div>
+            <h3>Found by area</h3>
+            <ul id="areaSummary"></ul>
+          </div>
+          <div>
+            <h3>Found by group</h3>
+            <ul id="groupSummary"></ul>
+          </div>
+        </div>
+        <div id="badgeList" class="badge-list"></div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Area</th>
+                <th>Species</th>
+                <th>Group</th>
+                <th>Status</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody id="recordsTable"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>

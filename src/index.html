@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Nature Explorer Songkhla</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="hero-copy">
+        <p class="eyebrow">Songkhla field guide game</p>
+        <h1 class="brand-logo">Nature Explorer <span>Songkhla</span></h1>
+        <p class="subtitle">Explore. Discover. Protect.</p>
+        <p class="hero-note">Find all species in Songkhla.</p>
+      </div>
+      <div class="hero-scene" aria-hidden="true">
+        <div class="sun"></div>
+        <div class="island island-back"></div>
+        <div class="island island-front"></div>
+        <div class="explorer-card">Explorer Kit</div>
+      </div>
+      <button id="startButton" type="button">Start Exploring</button>
+    </header>
+
+    <nav class="app-nav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="map.html">Map</a>
+      <a href="naturedex.html">NatureDex</a>
+      <a href="upload.html">Upload</a>
+      <a href="records.html">Records</a>
+    </nav>
+
+    <main class="page-main">
+      <section class="panel page-panel" aria-labelledby="homeTitle">
+        <span class="step-number">1</span>
+        <h2 id="homeTitle">Ask Location &amp; Introduce Nearest Place</h2>
+        <p>
+          Explore real Songkhla nature sites, check in when you are close, upload
+          observations, and unlock species in your NatureDex.
+        </p>
+        <div class="home-grid">
+          <article class="mini-card">
+            <h3>Nearest exploration site</h3>
+            <p id="nearestSite">Ko Nu</p>
+          </article>
+          <article class="mini-card">
+            <h3>Today's mission</h3>
+            <p>Check in at a site and save one observation.</p>
+          </article>
+        </div>
+        <div class="quick-stats" aria-label="Quick stats">
+          <div>
+            <strong id="homeSpeciesFound">0</strong>
+            <span>species found</span>
+          </div>
+          <div>
+            <strong id="homeCheckIns">0</strong>
+            <span>check-ins</span>
+          </div>
+          <div>
+            <strong id="homeBadges">0</strong>
+            <span>badges</span>
+          </div>
+          <div>
+            <strong id="homeAreasExplored">0</strong>
+            <span>areas explored</span>
+          </div>
+        </div>
+        <div id="locationStatus" class="status-message">Location has not been requested yet.</div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>

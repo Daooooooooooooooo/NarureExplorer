@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NatureDex - Nature Explorer Songkhla</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="page-header">
+      <span class="step-number">4</span>
+      <p class="eyebrow">Collectible field guide</p>
+      <h1>Create Cartoon Image</h1>
+    </header>
+
+    <nav class="app-nav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="map.html">Map</a>
+      <a href="naturedex.html">NatureDex</a>
+      <a href="upload.html">Upload</a>
+      <a href="records.html">Records</a>
+    </nav>
+
+    <main class="page-main">
+      <section class="panel page-panel" aria-labelledby="dexTitle">
+        <span class="step-number">4</span>
+        <h2 id="dexTitle">NatureDex</h2>
+        <label for="areaFilter">Filter by area</label>
+        <select id="areaFilter"></select>
+        <div id="speciesList" class="species-grid" aria-label="Species cards"></div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>

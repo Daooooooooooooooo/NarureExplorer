@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Camera / Upload - Nature Explorer Songkhla</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="page-header">
+      <span class="step-number">5</span>
+      <p class="eyebrow">Explorer camera</p>
+      <h1>Compare Photos</h1>
+    </header>
+
+    <nav class="app-nav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="map.html">Map</a>
+      <a href="naturedex.html">NatureDex</a>
+      <a href="upload.html">Upload</a>
+      <a href="records.html">Records</a>
+    </nav>
+
+    <main class="page-main">
+      <section class="panel page-panel" aria-labelledby="uploadTitle">
+        <span class="step-number">5</span>
+        <h2 id="uploadTitle">Camera / Upload</h2>
+        <form id="observationForm">
+          <div class="camera-preview">Take a Photo</div>
+
+          <label for="photoInput">Photo</label>
+          <input id="photoInput" name="photoInput" type="file" accept="image/*">
+
+          <label for="observationArea">Area</label>
+          <select id="observationArea" name="observationArea"></select>
+
+          <label for="speciesSelect">Suspected species</label>
+          <select id="speciesSelect" name="speciesSelect"></select>
+
+          <fieldset>
+            <legend>Simulated verification result</legend>
+            <label class="choice">
+              <input type="radio" name="verificationStatus" value="Pending verification" checked>
+              Pending verification
+            </label>
+            <label class="choice">
+              <input type="radio" name="verificationStatus" value="Unlocked">
+              Unlocked
+            </label>
+          </fieldset>
+
+          <button type="submit">Save Observation</button>
+          <p id="formError" class="error-message" role="alert"></p>
+        </form>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
