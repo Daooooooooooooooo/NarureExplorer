@@ -154,6 +154,7 @@ function requestLocation() {
       selectedSite = sites[0];
       locationStatus.textContent = "Location allowed. Nearest site: Ko Nu.";
       renderHomeStats();
+      window.location.href = `area.html?site=${encodeURIComponent(selectedSite.name)}`;
     },
     () => {
       locationStatus.textContent = "Location denied. Please choose a site manually.";

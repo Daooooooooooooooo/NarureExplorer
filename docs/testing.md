@@ -68,6 +68,8 @@ For multi-step tasks, use a short plan:
 
 - The app starts without a build step.
 - Navigation opens separate static pages and labels Page 2 as Station.
+- Confirming browser location on Home automatically opens Area Detail for the
+  nearest sample station.
 - Station and Area Detail views show only species connected to the selected station.
 - Upload requires a photo and checks it against generated references for species
   at the selected station.

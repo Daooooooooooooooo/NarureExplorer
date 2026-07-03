@@ -63,6 +63,7 @@ foreach ($text in $requiredHtmlText) {
 $requiredScriptText = @(
     "natureExplorerObservations",
     "localStorage.setItem",
+    "window.location.href",
     "You need to be closer to this site to check in.",
     "Unlocked",
     "countUnlockedBy",

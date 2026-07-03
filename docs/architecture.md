@@ -75,16 +75,18 @@ after the frontend flow is clear.
 2. Navigation links move between the static pages.
 3. The Station page shows exploration stations.
 4. The app loads station data and a CSV-derived species database from shared `src/app.js`.
-5. Station and NatureDex links pass selected site or species names through URL query parameters.
-6. Area Detail shows only species connected to the selected station.
-7. The app displays area details and simulated check-in feedback.
-8. A successful check-in is saved to browser `localStorage`.
-9. The user submits an observation from the upload form.
-10. The app compares the uploaded image to a generated species reference profile
+5. When location permission is confirmed, the Home page opens Area Detail for
+   the nearest sample station automatically.
+6. Station and NatureDex links pass selected site or species names through URL query parameters.
+7. Area Detail shows only species connected to the selected station.
+8. The app displays area details and simulated check-in feedback.
+9. A successful check-in is saved to browser `localStorage`.
+10. The user submits an observation from the upload form.
+11. The app compares the uploaded image to a generated species reference profile
    for species available at the selected station.
-11. If a station species is matched, the app saves a `Matched` observation and
+12. If a station species is matched, the app saves a `Matched` observation and
    shows a tick on that species card for that station.
-12. The Records table, NatureDex lock state, total found count, and badges update
+13. The Records table, NatureDex lock state, total found count, and badges update
    from the saved observations.
 
 ## Species Data
