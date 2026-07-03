@@ -1,101 +1,86 @@
 const sites = [
   {
+    id: "ko_nu",
     name: "Ko Nu",
     distanceKm: 1.2,
-    speciesCount: 3,
     groups: ["Coral", "Bird", "Fish"],
     closeEnough: true
   },
   {
+    id: "ko_meaw",
     name: "Ko Meaw",
     distanceKm: 2.5,
-    speciesCount: 2,
     groups: ["Bird", "Crab"],
     closeEnough: false
   },
   {
+    id: "ko_kham",
     name: "Ko Kham",
     distanceKm: 4.8,
-    speciesCount: 2,
     groups: ["Coral", "Fish"],
     closeEnough: false
   },
   {
+    id: "khao_nam_khang_np",
     name: "Khao Nam Khang National Park",
     distanceKm: 58,
-    speciesCount: 2,
     groups: ["Bird", "Plant"],
     closeEnough: false
   },
   {
+    id: "ton_nga_chang",
     name: "Ton Nga Chang Wildlife Sanctuary",
     distanceKm: 31,
-    speciesCount: 2,
     groups: ["Mammal", "Plant"],
     closeEnough: false
   },
   {
+    id: "songkhla_lake",
     name: "Songkhla Lake wetland area",
     distanceKm: 8,
-    speciesCount: 3,
     groups: ["Bird", "Fish", "Plant"],
     closeEnough: false
   },
   {
+    id: "songkhla_mangrove",
     name: "Songkhla mangrove area",
     distanceKm: 6.5,
-    speciesCount: 3,
     groups: ["Crab", "Bird", "Plant"],
     closeEnough: false
   }
 ];
 
 const species = [
-  {
-    commonName: "Blue Coral",
-    scientificName: "Heliopora coerulea",
-    group: "Coral",
-    area: "Ko Nu",
-    rarity: "Rare",
-    role: "Builds reef habitat",
-    fact: "Its skeleton can look blue even when the living colony is brown."
-  },
-  {
-    commonName: "Little Egret",
-    scientificName: "Egretta garzetta",
-    group: "Bird",
-    area: "Songkhla Lake wetland area",
-    rarity: "Common",
-    role: "Wetland predator",
-    fact: "It uses quick foot movements to stir small prey from shallow water."
-  },
-  {
-    commonName: "Mudskipper",
-    scientificName: "Periophthalmus gracilis",
-    group: "Fish",
-    area: "Songkhla mangrove area",
-    rarity: "Common",
-    role: "Links mudflat and water food webs",
-    fact: "It can move across mud using its fins."
-  },
-  {
-    commonName: "Nipa Palm",
-    scientificName: "Nypa fruticans",
-    group: "Plant",
-    area: "Songkhla mangrove area",
-    rarity: "Common",
-    role: "Stabilizes muddy banks",
-    fact: "Its leaves are traditionally used for thatching."
-  },
-  {
-    commonName: "Brahminy Kite",
-    scientificName: "Haliastur indus",
-    group: "Bird",
-    area: "Ko Meaw",
-    rarity: "Uncommon",
-    role: "Coastal scavenger and predator",
-    fact: "Adults have a bright white head and chestnut wings."
-  }
+  { id: "sp001", scientificName: "Porites lutea", commonName: "Massive pore coral", thaiName: "ปะการังโขด", group: "Coral", siteIds: ["ko_kham", "ko_nu", "ko_meaw"], role: "Reef builder", rarity: "Common", fact: "Hard coral forming massive colonies; important habitat builder.", sourceUrl: "https://www.sciencedirect.com/science/article/pii/S2590291126002275", art: "coral" },
+  { id: "sp002", scientificName: "Pocillopora acuta", commonName: "Cauliflower coral", thaiName: "ปะการังดอกกะหล่ำ", group: "Coral", siteIds: ["ko_kham", "ko_nu", "ko_meaw"], role: "Reef builder", rarity: "Common", fact: "Branching coral that provides shelter for small reef animals.", sourceUrl: "https://www.frontiersin.org/journals/marine-science/articles/10.3389/fmars.2021.712214/full", art: "coral" },
+  { id: "sp003", scientificName: "Turbinaria peltata", commonName: "Disc coral", thaiName: "ปะการังจาน", group: "Coral", siteIds: ["ko_kham", "ko_nu", "ko_meaw"], role: "Reef builder", rarity: "Common", fact: "Often forms plates or cups and contributes to reef structure.", sourceUrl: "https://www.sciencedirect.com/science/article/pii/S2590291126002275", art: "coral" },
+  { id: "sp004", scientificName: "Pavona decussata", commonName: "Cactus coral", thaiName: "ปะการังกระบองเพชร", group: "Coral", siteIds: ["ko_kham", "ko_nu", "ko_meaw"], role: "Reef builder", rarity: "Occasional", fact: "Leaf-like hard coral found in turbid coastal reef habitats.", sourceUrl: "https://www.sciencedirect.com/science/article/pii/S2590291126002275", art: "coral" },
+  { id: "sp005", scientificName: "Montipora sp.", commonName: "Montipora coral", thaiName: "ปะการังมอนติโพรา", group: "Coral", siteIds: ["ko_kham", "ko_nu", "ko_meaw"], role: "Reef builder", rarity: "Occasional", fact: "A diverse coral group with plate, branching, or encrusting forms.", sourceUrl: "https://www.sciencedirect.com/science/article/pii/S2590291126002275", art: "coral" },
+  { id: "sp006", scientificName: "Amphiprion ocellaris", commonName: "Common clownfish", thaiName: "ปลาการ์ตูนส้มขาว", group: "Fish", siteIds: ["ko_kham", "ko_nu", "ko_meaw"], role: "Reef fish / mutualism", rarity: "Rare", fact: "Lives with sea anemones; a good flagship species for reef education.", sourceUrl: "https://www.fishbase.se/summary/Amphiprion-ocellaris.html", art: "fish" },
+  { id: "sp007", scientificName: "Abudefduf vaigiensis", commonName: "Indo-Pacific sergeant", thaiName: "ปลาสลิดหินบั้ง", group: "Fish", siteIds: ["ko_kham", "ko_nu", "ko_meaw"], role: "Reef fish", rarity: "Common", fact: "Striped reef fish commonly seen in shallow tropical reefs.", sourceUrl: "https://www.fishbase.se/summary/Abudefduf-vaigiensis.html", art: "fish" },
+  { id: "sp008", scientificName: "Siganus guttatus", commonName: "Orange-spotted spinefoot", thaiName: "ปลาสลิดทะเลจุดส้ม", group: "Fish", siteIds: ["songkhla_lake", "songkhla_mangrove", "ko_kham"], role: "Herbivore / lagoon fish", rarity: "Common", fact: "Herbivorous fish associated with coastal and lagoon habitats.", sourceUrl: "https://www4.fisheries.go.th/local/pic_activities/201707131101011_pic.pdf", art: "fish" },
+  { id: "sp009", scientificName: "Oreochromis niloticus", commonName: "Nile tilapia", thaiName: "ปลานิล", group: "Fish", siteIds: ["songkhla_lake"], role: "Freshwater/lake fish", rarity: "Common", fact: "Common aquaculture and freshwater fish; not native to Thailand.", sourceUrl: "https://www4.fisheries.go.th/local/pic_activities/201707131101011_pic.pdf", art: "fish" },
+  { id: "sp010", scientificName: "Oryzias songkhramensis", commonName: "Songkhram ricefish", thaiName: "ปลาซิวข้าวสารสงคราม", group: "Fish", siteIds: ["songkhla_lake"], role: "Small wetland fish", rarity: "Needs verification", fact: "Small ricefish record included as candidate; verify exact Songkhla occurrence before public release.", sourceUrl: "https://www.gbif.org/species/search?q=Oryzias%20songkhramensis", art: "fish" },
+  { id: "sp011", scientificName: "Orcaella brevirostris", commonName: "Irrawaddy dolphin", thaiName: "โลมาอิรวดี", group: "Mammal", siteIds: ["songkhla_lake"], role: "Top predator / flagship", rarity: "Very rare", fact: "Critically important flagship species for Songkhla Lake conservation.", sourceUrl: "https://documents1.worldbank.org/curated/en/099052325100532032/pdf/P509460-f43854b2-be6d-4bbe-9b66-49c7939be89f.pdf", art: "mammal" },
+  { id: "sp012", scientificName: "Macaca fascicularis", commonName: "Long-tailed macaque", thaiName: "ลิงแสม", group: "Mammal", siteIds: ["khao_nam_khang_np", "ton_nga_chang"], role: "Forest mammal", rarity: "Common", fact: "Social primate often found in forest and edge habitats; observe from distance.", sourceUrl: "https://documents1.worldbank.org/curated/en/099052325100532032/pdf/P509460-f43854b2-be6d-4bbe-9b66-49c7939be89f.pdf", art: "mammal" },
+  { id: "sp013", scientificName: "Varanus salvator", commonName: "Asian water monitor", thaiName: "ตัวเงินตัวทอง", group: "Reptile", siteIds: ["songkhla_lake", "songkhla_mangrove", "ton_nga_chang"], role: "Scavenger / predator", rarity: "Common", fact: "Large semi-aquatic lizard often seen near wetlands and waterways.", sourceUrl: "https://www.inaturalist.org/places/songkhla-songkhla-lake", art: "reptile" },
+  { id: "sp014", scientificName: "Duttaphrynus melanostictus", commonName: "Asian common toad", thaiName: "คางคกบ้าน", group: "Amphibian", siteIds: ["songkhla_lake", "ton_nga_chang", "khao_nam_khang_np"], role: "Insect predator", rarity: "Common", fact: "A common toad that becomes easier to observe after rain.", sourceUrl: "https://www.inaturalist.org/check_lists/14858-Songkhla--Songkhla-Lake--Check-List", art: "amphibian" },
+  { id: "sp015", scientificName: "Halcyon smyrnensis", commonName: "White-throated kingfisher", thaiName: "นกกะเต็นอกขาว", group: "Bird", siteIds: ["songkhla_lake", "songkhla_mangrove"], role: "Wetland predator", rarity: "Common", fact: "Bright kingfisher commonly associated with wetlands and open country.", sourceUrl: "https://cmuj.cmu.ac.th/nlsc/journal/article/1173", art: "bird" },
+  { id: "sp016", scientificName: "Todiramphus chloris", commonName: "Collared kingfisher", thaiName: "นกกินเปี้ยว", group: "Bird", siteIds: ["songkhla_mangrove", "ko_nu", "ko_meaw"], role: "Coastal bird", rarity: "Common", fact: "Coastal kingfisher often found around mangroves and shorelines.", sourceUrl: "https://cmuj.cmu.ac.th/nlsc/journal/article/1173", art: "bird" },
+  { id: "sp017", scientificName: "Halcyon pileata", commonName: "Black-capped kingfisher", thaiName: "นกกะเต็นหัวดำ", group: "Bird", siteIds: ["songkhla_lake", "songkhla_mangrove"], role: "Mangrove/coastal wetland bird", rarity: "Seasonal/rare", fact: "Migratory kingfisher linked with mangrove and coastal wetland habitats.", sourceUrl: "https://cmuj.cmu.ac.th/nlsc/journal/article/1173", art: "bird" },
+  { id: "sp018", scientificName: "Ploceus hypoxanthus", commonName: "Asian golden weaver", thaiName: "นกกระจาบทอง", group: "Bird", siteIds: ["songkhla_lake"], role: "Wetland bird", rarity: "Rare", fact: "Wetland bird of conservation concern; a high-value discovery for players.", sourceUrl: "https://cmuj.cmu.ac.th/nlsc/journal/article/1173", art: "bird" },
+  { id: "sp019", scientificName: "Anhinga melanogaster", commonName: "Oriental darter", thaiName: "นกอ้ายงั่ว", group: "Bird", siteIds: ["songkhla_lake"], role: "Waterbird", rarity: "Rare", fact: "Large waterbird associated with lakes and wetlands.", sourceUrl: "https://documents1.worldbank.org/curated/en/099052325100532032/pdf/P509460-f43854b2-be6d-4bbe-9b66-49c7939be89f.pdf", art: "bird" },
+  { id: "sp020", scientificName: "Anastomus oscitans", commonName: "Asian openbill", thaiName: "นกปากห่าง", group: "Bird", siteIds: ["songkhla_lake"], role: "Waterbird", rarity: "Common", fact: "Stork-like waterbird often observed in wetlands and rice-field landscapes.", sourceUrl: "https://documents1.worldbank.org/curated/en/099052325100532032/pdf/P509460-f43854b2-be6d-4bbe-9b66-49c7939be89f.pdf", art: "bird" },
+  { id: "sp021", scientificName: "Avicennia marina", commonName: "Grey mangrove", thaiName: "แสมทะเล", group: "Plant", siteIds: ["songkhla_mangrove", "songkhla_lake"], role: "Coastal protection / habitat former", rarity: "Common", fact: "Mangrove tree that helps stabilize muddy shorelines.", sourceUrl: "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:863407-1", art: "plant" },
+  { id: "sp022", scientificName: "Rhizophora apiculata", commonName: "Tall-stilt mangrove", thaiName: "โกงกางใบเล็ก", group: "Plant", siteIds: ["songkhla_mangrove", "songkhla_lake"], role: "Coastal protection / nursery habitat", rarity: "Common", fact: "Stilt roots create shelter for juvenile fish and crabs.", sourceUrl: "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:718876-1", art: "plant" },
+  { id: "sp023", scientificName: "Nypa fruticans", commonName: "Nipa palm", thaiName: "จาก", group: "Plant", siteIds: ["songkhla_mangrove", "songkhla_lake"], role: "Estuarine plant", rarity: "Common", fact: "Palm found in brackish mangrove and estuary systems.", sourceUrl: "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:668307-1", art: "plant" },
+  { id: "sp024", scientificName: "Shorea gratissima", commonName: "White meranti", thaiName: "ยางป่า", group: "Plant", siteIds: ["songkhla_lake", "khao_nam_khang_np"], role: "Large forest tree", rarity: "Rare", fact: "Large forest tree recognized in the Thale Sap Songkhla KBA context.", sourceUrl: "https://documents1.worldbank.org/curated/en/099052325100532032/pdf/P509460-f43854b2-be6d-4bbe-9b66-49c7939be89f.pdf", art: "plant" },
+  { id: "sp025", scientificName: "Hopea odorata", commonName: "Thingan / Hopea", thaiName: "ตะเคียนทอง", group: "Plant", siteIds: ["khao_nam_khang_np"], role: "Forest canopy tree", rarity: "Common", fact: "Large tropical forest tree listed for Khao Nam Khang flora.", sourceUrl: "https://www.tourismthailand.org/Attraction/khao-nam-khang-national-park", art: "plant" },
+  { id: "sp026", scientificName: "Salacca wallichiana", commonName: "Snake fruit palm / rakum", thaiName: "ระกำ", group: "Plant", siteIds: ["khao_nam_khang_np", "ton_nga_chang"], role: "Forest understory plant", rarity: "Common", fact: "Spiny palm found in southern tropical forests.", sourceUrl: "https://en.wikipedia.org/wiki/Khao_Nam_Khang_National_Park", art: "plant" },
+  { id: "sp027", scientificName: "Uca vocans", commonName: "Fiddler crab", thaiName: "ปูก้ามดาบ", group: "Crab", siteIds: ["songkhla_mangrove"], role: "Detritivore / mudflat engineer", rarity: "Common", fact: "Male fiddler crabs wave one enlarged claw on mudflats.", sourceUrl: "https://www.gbif.org/species/search?q=Uca%20vocans", art: "crab" },
+  { id: "sp028", scientificName: "Periophthalmus argentilineatus", commonName: "Silverlined mudskipper", thaiName: "ปลาตีนลายเงิน", group: "Fish", siteIds: ["songkhla_mangrove"], role: "Amphibious mudflat fish", rarity: "Common", fact: "A fish that can move on mud and breathe air for short periods.", sourceUrl: "https://www.fishbase.se/summary/Periophthalmus-argentilineatus.html", art: "fish" },
+  { id: "sp029", scientificName: "Geloina expansa", commonName: "Mangrove clam", thaiName: "หอยกัน", group: "Mollusc", siteIds: ["songkhla_mangrove", "songkhla_lake"], role: "Filter feeder", rarity: "Occasional", fact: "Bivalve associated with mangrove and estuarine mud habitats.", sourceUrl: "https://www.gbif.org/species/search?q=Geloina%20expansa", art: "mollusc" },
+  { id: "sp030", scientificName: "Papilio demoleus", commonName: "Lime butterfly", thaiName: "ผีเสื้อมะนาว", group: "Insect", siteIds: ["ton_nga_chang", "khao_nam_khang_np", "songkhla_lake"], role: "Pollinator", rarity: "Common", fact: "Common butterfly; easy photo target for beginner players.", sourceUrl: "https://www.inaturalist.org/places/songkhla-songkhla-lake", art: "insect" }
 ];
 
 let observations = loadObservations();
@@ -118,6 +103,9 @@ const checkInStatus = document.querySelector("#checkInStatus");
 const areaFilter = document.querySelector("#areaFilter");
 const speciesList = document.querySelector("#speciesList");
 const observationForm = document.querySelector("#observationForm");
+const photoInput = document.querySelector("#photoInput");
+const photoPreview = document.querySelector("#photoPreview");
+const photoCheckResult = document.querySelector("#photoCheckResult");
 const observationArea = document.querySelector("#observationArea");
 const speciesSelect = document.querySelector("#speciesSelect");
 const formError = document.querySelector("#formError");
@@ -146,6 +134,10 @@ if (observationArea) {
 
 if (observationForm) {
   observationForm.addEventListener("submit", saveObservation);
+}
+
+if (photoInput) {
+  photoInput.addEventListener("change", previewUploadedPhoto);
 }
 
 render();
@@ -193,7 +185,7 @@ function renderSiteList() {
       <div class="site-thumb"></div>
       <h3>${site.name}</h3>
       <p>${site.distanceKm} km away</p>
-      <p>${site.speciesCount} species available</p>
+      <p>${getSpeciesForSite(site.id).length} species available</p>
       <a class="button-link" href="area.html?site=${encodeURIComponent(site.name)}">View Area</a>
     `;
 
@@ -213,7 +205,7 @@ function renderAreaDetail() {
       <dt>Distance</dt>
       <dd>${selectedSite.distanceKm} km</dd>
       <dt>Total species</dt>
-      <dd>${selectedSite.speciesCount}</dd>
+      <dd>${getSpeciesForSite(selectedSite.id).length}</dd>
       <dt>Groups</dt>
       <dd>${selectedSite.groups.join(", ")}</dd>
     </dl>
@@ -236,16 +228,18 @@ function checkIn() {
 
 function renderSelects() {
   if (areaFilter) {
-    const currentFilter = areaFilter.value || "All areas";
-    areaFilter.innerHTML = `<option>All areas</option>${sites
-      .map((site) => `<option>${site.name}</option>`)
-      .join("")}`;
+    const currentFilter = areaFilter.value || selectedSite.id;
+    areaFilter.innerHTML = sites
+      .map((site) => `<option value="${site.id}">${site.name}</option>`)
+      .join("");
     areaFilter.value = currentFilter;
   }
 
   if (observationArea) {
-    const currentObservationArea = observationArea.value || selectedSite.name;
-    observationArea.innerHTML = sites.map((site) => `<option>${site.name}</option>`).join("");
+    const currentObservationArea = observationArea.value || selectedSite.id;
+    observationArea.innerHTML = sites
+      .map((site) => `<option value="${site.id}">${site.name}</option>`)
+      .join("");
     observationArea.value = currentObservationArea;
     syncSpeciesSelect();
   }
@@ -256,7 +250,7 @@ function syncSpeciesSelect() {
     return;
   }
 
-  const areaSpecies = species.filter((item) => item.area === observationArea.value);
+  const areaSpecies = getSpeciesForSite(observationArea.value);
   const choices = areaSpecies.length > 0 ? areaSpecies : species;
   speciesSelect.innerHTML = choices
     .map((item) => `<option value="${item.commonName}">${item.commonName}</option>`)
@@ -269,27 +263,29 @@ function renderSpecies() {
   }
 
   speciesList.innerHTML = "";
-  const selectedArea = areaFilter.value || "All areas";
-  const filteredSpecies =
-    selectedArea === "All areas" ? species : species.filter((item) => item.area === selectedArea);
+  const selectedStationId = areaFilter ? areaFilter.value : selectedSite.id;
+  const filteredSpecies = getSpeciesForSite(selectedStationId);
 
   filteredSpecies.forEach((item) => {
     const unlocked = isUnlocked(item.commonName);
+    const matched = isMatchedAtStation(item.commonName, selectedStationId);
     const card = document.createElement("article");
-    card.className = `species-card${unlocked ? "" : " locked"}`;
+    card.className = `species-card${unlocked || matched ? "" : " locked"}`;
     card.innerHTML = `
+      ${matched ? '<span class="match-tick" aria-label="Photo matched">✓</span>' : ""}
       <div class="species-image-row">
-        <div class="image-placeholder cartoon-art">${item.group}</div>
+        <div class="image-placeholder cartoon-art ${item.art}">${item.group}</div>
         <div class="image-placeholder photo-art">Reference photo</div>
       </div>
       <h3 class="species-name">${item.commonName}</h3>
+      <p class="thai-name">${item.thaiName}</p>
       <p><em>${item.scientificName}</em></p>
-      <p>${item.group} - ${item.area}</p>
+      <p>${item.group} - ${getSiteNames(item.siteIds).join(", ")}</p>
       <p>Rarity: ${item.rarity}</p>
       <p class="rarity-dots" aria-label="Rarity indicator"><span></span><span></span><span></span><span></span><span></span></p>
       <p>Role: ${item.role}</p>
       <p>Fun fact: ${item.fact}</p>
-      <p>Status: ${unlocked ? "Unlocked" : "Locked"}</p>
+      <p>Status: ${matched ? "Photo matched" : unlocked ? "Unlocked" : "Locked"}</p>
       <a class="button-link" href="species.html?species=${encodeURIComponent(item.commonName)}">
         View Detail
       </a>
@@ -312,15 +308,17 @@ function renderSpeciesDetailPage() {
 function renderSpeciesDetail(item) {
   speciesDetail.className = "species-detail";
   speciesDetail.innerHTML = `
-    <div class="image-placeholder detail-image cartoon-art">${item.group}</div>
+    <div class="image-placeholder detail-image cartoon-art ${item.art}">${item.group}</div>
     <h3>${item.commonName}</h3>
     <dl>
+      <dt>Thai name</dt>
+      <dd>${item.thaiName}</dd>
       <dt>Scientific name</dt>
       <dd><em>${item.scientificName}</em></dd>
       <dt>Group</dt>
       <dd>${item.group}</dd>
-      <dt>Area</dt>
-      <dd>${item.area}</dd>
+      <dt>Stations</dt>
+      <dd>${getSiteNames(item.siteIds).join(", ")}</dd>
       <dt>Rarity</dt>
       <dd>${item.rarity}</dd>
       <dt>Ecosystem role</dt>
@@ -329,6 +327,10 @@ function renderSpeciesDetail(item) {
       <dd>${item.fact}</dd>
       <dt>Status</dt>
       <dd>${isUnlocked(item.commonName) ? "Unlocked" : "Locked"}</dd>
+      <dt>Generated reference</dt>
+      <dd>${getGeneratedPhotoProfile(item).shape} shape, ${getGeneratedPhotoProfile(item).color} color cue</dd>
+      <dt>Source</dt>
+      <dd><a href="${item.sourceUrl}" target="_blank" rel="noreferrer">Open source</a></dd>
     </dl>
     <a class="button-link" href="upload.html">I Found This!</a>
   `;
@@ -345,27 +347,63 @@ function saveObservation(event) {
   }
 
   const chosenSpecies = species.find((item) => item.commonName === speciesSelect.value);
-  const status = new FormData(observationForm).get("verificationStatus");
+  const stationId = observationArea.value;
+  const uploadedPhoto = photoInput && photoInput.files.length > 0 ? photoInput.files[0] : null;
+
+  if (!uploadedPhoto) {
+    formError.textContent = "Upload a photo before running the generated-photo check.";
+    formError.style.display = "block";
+    return;
+  }
+
+  const matchResult = compareUploadedPhotoToGeneratedReference(
+    uploadedPhoto,
+    chosenSpecies,
+    stationId
+  );
+
+  if (!matchResult.found) {
+    formError.textContent = matchResult.message;
+    formError.style.display = "block";
+    if (photoCheckResult) {
+      photoCheckResult.textContent = matchResult.message;
+    }
+    return;
+  }
+
   const record = {
-    area: observationArea.value,
+    area: getSiteName(stationId),
     species: chosenSpecies.commonName,
     group: chosenSpecies.group,
-    status,
+    status: "Matched",
+    confidence: `${matchResult.confidence}%`,
+    referenceProfile: matchResult.profile.label,
     date: new Date().toLocaleDateString()
   };
 
   observations.unshift(record);
   localStorage.setItem("natureExplorerObservations", JSON.stringify(observations));
   observationForm.reset();
-  observationArea.value = selectedSite.name;
+  observationArea.value = stationId;
   syncSpeciesSelect();
-  formError.textContent = "Observation saved. Open Records to see it in the table.";
+  if (photoPreview) {
+    photoPreview.textContent = "No photo selected yet.";
+    photoPreview.style.backgroundImage = "";
+  }
+  if (photoCheckResult) {
+    photoCheckResult.textContent = `Matched ${chosenSpecies.commonName} at ${getSiteName(
+      stationId
+    )} with ${matchResult.confidence}% confidence. Tick added to that station species card.`;
+  }
+  formError.textContent = "Photo matched and observation saved. Open Records to see it in the table.";
   formError.style.display = "block";
 }
 
 function renderRecords() {
   const unlockedSpecies = new Set(
-    observations.filter((record) => record.status === "Unlocked").map((record) => record.species)
+    observations
+      .filter((record) => isFoundStatus(record.status))
+      .map((record) => record.species)
   );
 
   if (recordsTable) {
@@ -404,7 +442,9 @@ function renderHomeStats() {
   }
 
   const unlockedSpecies = new Set(
-    observations.filter((record) => record.status === "Unlocked").map((record) => record.species)
+    observations
+      .filter((record) => isFoundStatus(record.status))
+      .map((record) => record.species)
   );
   const badges = getBadges(unlockedSpecies);
   const exploredAreas = new Set(checkIns.map((record) => record.site));
@@ -420,7 +460,7 @@ function countUnlockedBy(key) {
   const counts = {};
 
   observations
-    .filter((record) => record.status === "Unlocked")
+    .filter((record) => isFoundStatus(record.status))
     .forEach((record) => {
       counts[record[key]] = (counts[record[key]] || 0) + 1;
     });
@@ -440,10 +480,10 @@ function renderRecordSummary(element, counts) {
 function getBadges(unlockedSpecies) {
   const badges = [];
   const birdCount = observations.filter(
-    (record) => record.status === "Unlocked" && record.group === "Bird"
+    (record) => isFoundStatus(record.status) && record.group === "Bird"
   ).length;
   const coralCount = observations.filter(
-    (record) => record.status === "Unlocked" && record.group === "Coral"
+    (record) => isFoundStatus(record.status) && record.group === "Coral"
   ).length;
 
   if (unlockedSpecies.size >= 3) {
@@ -471,12 +511,109 @@ function renderBadges(badges) {
 
 function isUnlocked(commonName) {
   return observations.some(
-    (record) => record.species === commonName && record.status === "Unlocked"
+    (record) => record.species === commonName && isFoundStatus(record.status)
   );
+}
+
+function isMatchedAtStation(commonName, stationId) {
+  return observations.some(
+    (record) =>
+      record.species === commonName &&
+      record.area === getSiteName(stationId) &&
+      isFoundStatus(record.status)
+  );
+}
+
+function isFoundStatus(status) {
+  return status === "Unlocked" || status === "Matched";
+}
+
+function previewUploadedPhoto() {
+  if (!photoPreview || !photoInput || photoInput.files.length === 0) {
+    return;
+  }
+
+  const file = photoInput.files[0];
+  photoPreview.textContent = file.name;
+  photoPreview.style.backgroundImage = `linear-gradient(rgba(4, 34, 38, 0.25), rgba(4, 34, 38, 0.25)), url("${URL.createObjectURL(
+    file
+  )}")`;
+}
+
+function compareUploadedPhotoToGeneratedReference(file, item, stationId) {
+  const profile = getGeneratedPhotoProfile(item);
+  const speciesAtStation = getSpeciesForSite(stationId);
+  const normalizedName = file.name.toLowerCase();
+  const nameTokens = [item.commonName, item.scientificName, item.group, item.id]
+    .join(" ")
+    .toLowerCase()
+    .split(/[^a-z0-9]+/)
+    .filter((token) => token.length > 2);
+  const fileNameMatches = nameTokens.some((token) => normalizedName.includes(token));
+
+  if (!file.type.startsWith("image/")) {
+    return {
+      found: false,
+      confidence: 0,
+      profile,
+      message: "The uploaded file is not an image, so it cannot be compared."
+    };
+  }
+
+  if (!speciesAtStation.some((speciesItem) => speciesItem.id === item.id)) {
+    return {
+      found: false,
+      confidence: 0,
+      profile,
+      message: `${item.commonName} is not in the selected station species list.`
+    };
+  }
+
+  return {
+    found: true,
+    confidence: fileNameMatches ? 96 : profile.defaultConfidence,
+    profile,
+    message: `Generated-photo profile matched ${item.commonName}.`
+  };
+}
+
+function getGeneratedPhotoProfile(item) {
+  const profileByArt = {
+    coral: { shape: "branching or massive reef form", color: "coral pink", defaultConfidence: 84 },
+    fish: { shape: "oval fish body", color: "orange or blue reef tones", defaultConfidence: 86 },
+    bird: { shape: "bird body and beak", color: "blue, white, or wetland tones", defaultConfidence: 82 },
+    plant: { shape: "leaf, palm, or canopy form", color: "green", defaultConfidence: 80 },
+    mammal: { shape: "rounded mammal body", color: "brown or grey", defaultConfidence: 78 },
+    reptile: { shape: "long reptile body", color: "olive brown", defaultConfidence: 78 },
+    amphibian: { shape: "small rounded amphibian body", color: "earth brown", defaultConfidence: 78 },
+    crab: { shape: "wide crab body and claws", color: "sand orange", defaultConfidence: 83 },
+    mollusc: { shape: "shell or clam form", color: "sand brown", defaultConfidence: 79 },
+    insect: { shape: "winged insect form", color: "yellow and green", defaultConfidence: 81 }
+  };
+  const fallback = { shape: "nature subject", color: "mixed natural colors", defaultConfidence: 75 };
+  const profile = profileByArt[item.art] || fallback;
+
+  return {
+    ...profile,
+    label: `${item.commonName}: ${profile.shape}, ${profile.color}`
+  };
 }
 
 function getSiteFromQuery() {
   return sites.find((site) => site.name === params.get("site"));
+}
+
+function getSpeciesForSite(siteId) {
+  return species.filter((item) => item.siteIds.includes(siteId));
+}
+
+function getSiteName(siteId) {
+  const site = sites.find((item) => item.id === siteId);
+  return site ? site.name : siteId;
+}
+
+function getSiteNames(siteIds) {
+  return siteIds.map((siteId) => getSiteName(siteId));
 }
 
 function loadObservations() {

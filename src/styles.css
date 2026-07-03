@@ -652,6 +652,7 @@ form {
 }
 
 .species-card {
+  position: relative;
   overflow: hidden;
   color: #ffffff;
   background: linear-gradient(180deg, #0c6371, #07363d);
@@ -686,6 +687,65 @@ form {
     linear-gradient(135deg, #0c5d6c, #123e65);
 }
 
+.cartoon-art.coral {
+  background:
+    radial-gradient(circle at 30% 58%, #ff8c7a 0 10%, transparent 11%),
+    radial-gradient(circle at 47% 45%, #ffcf6b 0 9%, transparent 10%),
+    radial-gradient(circle at 64% 58%, #ff7fb8 0 10%, transparent 11%),
+    linear-gradient(135deg, #117c94, #0b4758);
+}
+
+.cartoon-art.fish {
+  background:
+    radial-gradient(ellipse at 50% 52%, #ff8b2f 0 23%, transparent 24%),
+    radial-gradient(circle at 58% 45%, #ffffff 0 3%, #101820 4% 5%, transparent 6%),
+    radial-gradient(ellipse at 26% 52%, #ffcf6b 0 10%, transparent 11%),
+    linear-gradient(135deg, #168d98, #0b4758);
+}
+
+.cartoon-art.bird {
+  background:
+    radial-gradient(ellipse at 50% 55%, #2da8d8 0 20%, transparent 21%),
+    radial-gradient(circle at 57% 45%, #ffffff 0 3%, #101820 4% 5%, transparent 6%),
+    radial-gradient(ellipse at 34% 55%, #f8d34c 0 11%, transparent 12%),
+    linear-gradient(135deg, #6cc8e3, #116c8d);
+}
+
+.cartoon-art.plant {
+  background:
+    radial-gradient(ellipse at 40% 58%, #49b95f 0 14%, transparent 15%),
+    radial-gradient(ellipse at 58% 46%, #79d66b 0 16%, transparent 17%),
+    linear-gradient(160deg, transparent 45%, #6a3b1f 46% 52%, transparent 53%),
+    linear-gradient(135deg, #b7e88a, #167a56);
+}
+
+.cartoon-art.mammal,
+.cartoon-art.reptile,
+.cartoon-art.amphibian {
+  background:
+    radial-gradient(ellipse at 50% 55%, #b98955 0 22%, transparent 23%),
+    radial-gradient(circle at 57% 45%, #ffffff 0 3%, #101820 4% 5%, transparent 6%),
+    linear-gradient(135deg, #7fbf82, #0d5a45);
+}
+
+.cartoon-art.crab,
+.cartoon-art.mollusc,
+.cartoon-art.insect {
+  background:
+    radial-gradient(ellipse at 50% 56%, #d89542 0 19%, transparent 20%),
+    radial-gradient(circle at 57% 46%, #ffffff 0 3%, #101820 4% 5%, transparent 6%),
+    linear-gradient(135deg, #cce4a3, #0e6f68);
+}
+
+.thai-name {
+  font-weight: 900;
+  color: #ffe78b;
+}
+
+.species-detail a {
+  color: #ffe78b;
+}
+
 .rarity-dots {
   display: flex;
   gap: 0.3rem;
@@ -718,6 +778,47 @@ form {
     radial-gradient(circle at 48% 45%, rgba(244, 123, 69, 0.92) 0 13%, transparent 14%),
     radial-gradient(circle at 40% 50%, rgba(255, 255, 255, 0.45) 0 2%, transparent 3%),
     linear-gradient(180deg, #0d5864 0%, #0a3037 72%, #061c20 73%);
+  font-weight: 900;
+}
+
+.photo-preview,
+.photo-check-result {
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  border-radius: 18px;
+  padding: 0.75rem;
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.1);
+  background-position: center;
+  background-size: cover;
+  font-weight: 800;
+}
+
+.photo-preview {
+  min-height: 110px;
+  display: grid;
+  place-items: center;
+}
+
+.photo-check-result {
+  border-color: rgba(255, 231, 122, 0.55);
+  background: rgba(255, 231, 122, 0.14);
+}
+
+.match-tick {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 1;
+  display: grid;
+  width: 2.6rem;
+  height: 2.6rem;
+  place-items: center;
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+  color: #ffffff;
+  background: linear-gradient(180deg, #35d06f, #128242);
+  box-shadow: 0 0 18px rgba(53, 208, 111, 0.8), 0 5px 0 #0d5a36;
+  font-size: 1.55rem;
   font-weight: 900;
 }
 

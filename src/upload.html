@@ -15,7 +15,7 @@
 
     <nav class="app-nav" aria-label="Main navigation">
       <a href="index.html">Home</a>
-      <a href="map.html">Map</a>
+      <a href="map.html">Station</a>
       <a href="naturedex.html">NatureDex</a>
       <a href="upload.html">Upload</a>
       <a href="records.html">Records</a>
@@ -27,29 +27,22 @@
         <h2 id="uploadTitle">Camera / Upload</h2>
         <form id="observationForm">
           <div class="camera-preview">Take a Photo</div>
+          <div id="photoPreview" class="photo-preview">No photo selected yet.</div>
 
           <label for="photoInput">Photo</label>
           <input id="photoInput" name="photoInput" type="file" accept="image/*">
 
-          <label for="observationArea">Area</label>
+          <label for="observationArea">Station</label>
           <select id="observationArea" name="observationArea"></select>
 
           <label for="speciesSelect">Suspected species</label>
           <select id="speciesSelect" name="speciesSelect"></select>
 
-          <fieldset>
-            <legend>Simulated verification result</legend>
-            <label class="choice">
-              <input type="radio" name="verificationStatus" value="Pending verification" checked>
-              Pending verification
-            </label>
-            <label class="choice">
-              <input type="radio" name="verificationStatus" value="Unlocked">
-              Unlocked
-            </label>
-          </fieldset>
+          <div id="photoCheckResult" class="photo-check-result">
+            Upload a photo to compare with generated species references for this station.
+          </div>
 
-          <button type="submit">Save Observation</button>
+          <button type="submit">Check Photo &amp; Save Observation</button>
           <p id="formError" class="error-message" role="alert"></p>
         </form>
       </section>

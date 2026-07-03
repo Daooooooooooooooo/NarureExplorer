@@ -72,3 +72,19 @@ The folder has been prepared for the GitHub remote
 `docs/git_setup.md`. Git is not currently available on this machine's PATH, so
 repository initialization, staging, committing, and pushing still require Git to
 be installed or run from another shell where Git is available.
+
+## Species Database Pass
+
+Page 2 has been renamed from Map to Station. The species list now comes from the
+`species.csv` seed data and is embedded in `src/app.js` with English names, Thai
+names, scientific names, station IDs, rarity, roles, facts, source URLs, and
+cartoon-art categories. Area Detail and NatureDex now show species by selected
+station instead of showing every species at once.
+
+## Generated Photo Matching Pass
+
+The upload flow now requires a user photo, compares the suspected species
+against generated reference profiles for the selected station, stores successful
+matches as `Matched` observations, and shows a tick symbol on matched species
+cards at that station. This remains a local MVP simulation, not a trained image
+recognition model.

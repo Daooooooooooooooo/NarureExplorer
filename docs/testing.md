@@ -9,7 +9,7 @@ Explain how to test the project.
 Open `src/index.html` in a web browser, then use the navigation links for:
 
 - Home: `src/index.html`
-- Map: `src/map.html`
+- Station: `src/map.html`
 - Area Detail: `src/area.html`
 - NatureDex: `src/naturedex.html`
 - Camera / Upload: `src/upload.html`
@@ -25,9 +25,10 @@ From the project root, run:
 ```
 
 The script checks that the split page files exist and that key behavior strings
-for navigation, records, local storage, check-in messages, check-in stats,
-record summaries, simulated verification, and the reference-inspired style
-markers are present.
+for navigation, station filtering, bilingual species data, records, local
+storage, check-in messages, check-in stats, record summaries, simulated
+generated-photo matching, verification, and the reference-inspired style markers
+are present.
 
 ## Success Criteria
 
@@ -60,11 +61,18 @@ For multi-step tasks, use a short plan:
 - Browser geolocation is unavailable.
 - Browser `localStorage` data is manually edited into invalid JSON.
 - A user tries to save an observation without a selected species.
+- A user tries to check a photo without uploading an image.
+- A user selects a species that is not available at the selected station.
 
 ## Expected Outputs
 
 - The app starts without a build step.
-- Navigation opens separate static pages.
+- Navigation opens separate static pages and labels Page 2 as Station.
+- Station and Area Detail views show only species connected to the selected station.
+- Upload requires a photo and checks it against generated references for species
+  at the selected station.
+- A matched photo saves a `Matched` observation and shows a tick on that species
+  card for the station.
 - Pages use the cartoon-adventure visual style with numbered panels and rounded
   illustrated cards.
 - Selecting a site updates the Area Detail section.

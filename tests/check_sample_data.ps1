@@ -11,6 +11,7 @@ $requiredFiles = @(
     "src/styles.css",
     "src/app.js",
     "docs/agent_report.md",
+    "species.csv",
     "README.md",
     "docs/architecture.md",
     "docs/testing.md"
@@ -26,6 +27,7 @@ $html = ""
 foreach ($file in @("src/index.html", "src/map.html", "src/area.html", "src/naturedex.html", "src/upload.html", "src/records.html", "src/species.html")) {
     $html += Get-Content -Raw -LiteralPath $file
 }
+
 $script = Get-Content -Raw -LiteralPath "src/app.js"
 $styles = Get-Content -Raw -LiteralPath "src/styles.css"
 $appText = "$html`n$script`n$styles"
@@ -34,6 +36,7 @@ $requiredHtmlText = @(
     "Nature Explorer Songkhla",
     "Camera / Upload",
     "Records",
+    "Station",
     "recordsTable",
     "areaSummary",
     "groupSummary",
@@ -43,6 +46,8 @@ $requiredHtmlText = @(
     "brand-logo",
     "step-number",
     "camera-preview",
+    "photoPreview",
+    "photoCheckResult",
     "map.html",
     "naturedex.html",
     "upload.html",
@@ -51,7 +56,7 @@ $requiredHtmlText = @(
 
 foreach ($text in $requiredHtmlText) {
     if ($html -notlike "*$text*") {
-        throw "index.html does not contain expected text: $text"
+        throw "HTML pages do not contain expected text: $text"
     }
 }
 
@@ -59,7 +64,6 @@ $requiredScriptText = @(
     "natureExplorerObservations",
     "localStorage.setItem",
     "You need to be closer to this site to check in.",
-    "Pending verification",
     "Unlocked",
     "countUnlockedBy",
     "Fun fact",
@@ -71,13 +75,29 @@ $requiredScriptText = @(
     "species.html",
     "site-thumb",
     "rarity-dots",
-    "cartoon-art"
+    "cartoon-art",
+    "thaiName",
+    "siteIds",
+    "getSpeciesForSite",
+    "fishbase.se",
+    "sourceUrl",
+    "compareUploadedPhotoToGeneratedReference",
+    "getGeneratedPhotoProfile",
+    "isMatchedAtStation",
+    "Matched",
+    "match-tick",
+    "Photo matched"
 )
 
 foreach ($text in $requiredScriptText) {
     if ($appText -notlike "*$text*") {
         throw "MVP files do not contain expected behavior text: $text"
     }
+}
+
+$speciesRows = Import-Csv -LiteralPath "species.csv"
+if ($speciesRows.Count -lt 30) {
+    throw "species.csv should contain at least 30 species rows."
 }
 
 Write-Host "Sample data and MVP behavior checks passed."

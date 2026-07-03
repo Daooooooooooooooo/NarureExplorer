@@ -31,7 +31,7 @@ powershell -ExecutionPolicy Bypass -File .\tests\check_sample_data.ps1
 ## Main files
 
 - `src/index.html` - app structure and forms
-- `src/map.html` - exploration site list
+- `src/map.html` - station list
 - `src/area.html` - selected area details and check-in
 - `src/naturedex.html` - species cards
 - `src/upload.html` - simulated camera/upload form
@@ -39,6 +39,7 @@ powershell -ExecutionPolicy Bypass -File .\tests\check_sample_data.ps1
 - `src/species.html` - selected species detail
 - `src/styles.css` - page layout and visual styling
 - `src/app.js` - shared data, page rendering, check-in, NatureDex, observations, and records
+- `species.csv` - seed species database used to build the app species list
 - `tests/check_sample_data.ps1` - simple MVP behavior checks
 - `docs/git_setup.md` - GitHub remote and push commands
 
@@ -47,4 +48,5 @@ powershell -ExecutionPolicy Bypass -File .\tests\check_sample_data.ps1
 - This is a frontend-only MVP.
 - Records are saved in the browser with `localStorage`.
 - Location-based check-in is simulated with sample distance data.
-- Photo recognition is simulated by the user's selected species and status.
+- Photo recognition is simulated with local generated-reference profiles; no real
+  computer-vision model is included yet.

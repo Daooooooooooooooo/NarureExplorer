@@ -38,6 +38,7 @@ Nature Explorer Songkhla
 ```text
 NatureExplorer/
 |-- README.md
+|-- species.csv
 |-- docs/
 |   |-- architecture.md
 |   |-- agent_report.md
@@ -72,14 +73,26 @@ after the frontend flow is clear.
 
 1. The user opens `src/index.html`.
 2. Navigation links move between the static pages.
-3. The app loads sample exploration sites and species from shared `src/app.js`.
-4. Map and NatureDex links pass selected site or species names through URL query parameters.
-5. The app displays area details and simulated check-in feedback.
-6. A successful check-in is saved to browser `localStorage`.
-7. The user submits an observation from the upload form.
-8. The app saves the observation to browser `localStorage`.
-9. The Records table, NatureDex lock state, total found count, and badges update
+3. The Station page shows exploration stations.
+4. The app loads station data and a CSV-derived species database from shared `src/app.js`.
+5. Station and NatureDex links pass selected site or species names through URL query parameters.
+6. Area Detail shows only species connected to the selected station.
+7. The app displays area details and simulated check-in feedback.
+8. A successful check-in is saved to browser `localStorage`.
+9. The user submits an observation from the upload form.
+10. The app compares the uploaded image to a generated species reference profile
+   for species available at the selected station.
+11. If a station species is matched, the app saves a `Matched` observation and
+   shows a tick on that species card for that station.
+12. The Records table, NatureDex lock state, total found count, and badges update
    from the saved observations.
+
+## Species Data
+
+`species.csv` is the seed species dataset. The current frontend embeds the same
+species list in `src/app.js` so the app still runs directly from local files.
+Each species has English and Thai names, scientific name, group, station IDs,
+rarity, ecosystem role, fun fact, source URL, and a cartoon-art category.
 
 ## Storage Method
 
@@ -87,6 +100,15 @@ Records are saved in browser `localStorage` under
 `natureExplorerObservations`. Check-ins are saved under
 `natureExplorerCheckIns`. This is temporary MVP storage and is not shared between
 browsers or devices.
+
+## Photo Matching
+
+The current MVP uses simulated generated-reference profiles in `src/app.js`.
+Each species has an art category such as `fish`, `coral`, `bird`, or `plant`.
+When the user uploads an image, the app verifies that the suspected species is
+available at the selected station, compares the upload against that generated
+profile, stores a `Matched` observation, and displays a tick on the station
+species card. This is not a real machine-learning identification model.
 
 ## External Libraries
 
