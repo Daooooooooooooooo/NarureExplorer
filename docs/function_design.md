@@ -35,10 +35,10 @@
    - ecosystem role
    - fun fact
    - locked/unlocked status
-- Add camera/upload page.
+- Add photo upload under each species card.
 - For the first MVP, photo comparison can be simulated:
-   - user uploads a photo
-   - user selects the species they think it is
+   - user uploads a photo from a species card
+   - the card supplies the suspected species
    - system marks it as “pending verification” or “unlocked”
 - Add records page:
    - total species found
@@ -93,14 +93,12 @@
   - ecosystem role
   - rarity
   - fun fact
-- Big button: “I Found This!”
+- Big button/link back to NatureDex
 
-5. Camera / Upload Page
-- Make it feel like an explorer camera
-- Big preview area
-- Select area dropdown
-- Select species dropdown
-- Submit Observation button
+5. Species Card Upload
+- Put an upload control under each species card
+- The selected card supplies the station and suspected species
+- Submit Observation button checks the uploaded photo
 - Use friendly helper text
 
 6. Records Page
@@ -168,10 +166,8 @@ CSS/Tailwind style:
 - Unlocked species show cartoon image, real photo, name, and facts
 
 5. User takes or uploads photo
-- User opens Camera / Upload page
-- User takes photo or uploads from device
-- User selects the area
-- User selects suspected species
+- User uploads a photo from the species card
+- The app uses that card's station and suspected species
 - User submits observation
 
 6. Photo verification
@@ -210,7 +206,7 @@ CSS/Tailwind style:
 - The check-in button succeeds for the sample nearby site and shows a "closer to this site" message for other sample sites.
 - The NatureDex shows species cards with cartoon and real photo placeholders.
 - Locked species are visually obscured until the user saves an unlocked observation.
-- The upload form lets the user select an area, suspected species, and simulated verification status.
+- Each species card has an upload form for simulated verification.
 - Saved observations appear in the Records table.
 - Unlocked observations update the total species found and badge display.
 - Records remain available in the same browser through `localStorage`.

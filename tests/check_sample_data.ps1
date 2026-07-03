@@ -5,7 +5,6 @@ $requiredFiles = @(
     "src/map.html",
     "src/area.html",
     "src/naturedex.html",
-    "src/upload.html",
     "src/records.html",
     "src/species.html",
     "src/styles.css",
@@ -24,7 +23,7 @@ foreach ($file in $requiredFiles) {
 }
 
 $html = ""
-foreach ($file in @("src/index.html", "src/map.html", "src/area.html", "src/naturedex.html", "src/upload.html", "src/records.html", "src/species.html")) {
+foreach ($file in @("src/index.html", "src/map.html", "src/area.html", "src/naturedex.html", "src/records.html", "src/species.html")) {
     $html += Get-Content -Raw -LiteralPath $file
 }
 
@@ -34,7 +33,6 @@ $appText = "$html`n$script`n$styles"
 
 $requiredHtmlText = @(
     "Nature Explorer Songkhla",
-    "Camera / Upload",
     "Records",
     "Station",
     "recordsTable",
@@ -45,12 +43,8 @@ $requiredHtmlText = @(
     "Explore. Discover. Protect.",
     "brand-logo",
     "step-number",
-    "camera-preview",
-    "photoPreview",
-    "photoCheckResult",
     "map.html",
     "naturedex.html",
-    "upload.html",
     "records.html"
 )
 
@@ -87,7 +81,10 @@ $requiredScriptText = @(
     "isMatchedAtStation",
     "Matched",
     "match-tick",
-    "Photo matched"
+    "Photo matched",
+    "species-upload-form",
+    "speciesPhoto",
+    "saveInlineSpeciesPhoto"
 )
 
 foreach ($text in $requiredScriptText) {

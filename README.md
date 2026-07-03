@@ -34,7 +34,6 @@ powershell -ExecutionPolicy Bypass -File .\tests\check_sample_data.ps1
 - `src/map.html` - station list
 - `src/area.html` - selected area details and check-in
 - `src/naturedex.html` - species cards
-- `src/upload.html` - simulated camera/upload form
 - `src/records.html` - saved observation table and summaries
 - `src/species.html` - selected species detail
 - `src/styles.css` - page layout and visual styling

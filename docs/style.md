@@ -72,14 +72,12 @@ Every changed line should trace directly to the user's request. If a solution be
   - ecosystem role
   - rarity
   - fun fact
-- Big button: “I Found This!”
+- Big button/link back to NatureDex
 
-5. Camera / Upload Page
-- Make it feel like an explorer camera
-- Big preview area
-- Select area dropdown
-- Select species dropdown
-- Submit Observation button
+5. Species Card Upload
+- Add an upload control under each species card
+- Keep the control compact and friendly
+- Use a clear photo check button
 - Use friendly helper text
 
 6. Records Page

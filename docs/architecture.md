@@ -51,7 +51,6 @@ NatureExplorer/
 |   |-- map.html
 |   |-- area.html
 |   |-- naturedex.html
-|   |-- upload.html
 |   |-- records.html
 |   |-- species.html
 |   |-- styles.css
@@ -81,7 +80,7 @@ after the frontend flow is clear.
 7. Area Detail shows only species connected to the selected station.
 8. The app displays area details and simulated check-in feedback.
 9. A successful check-in is saved to browser `localStorage`.
-10. The user submits an observation from the upload form.
+10. The user uploads a photo from a species card.
 11. The app compares the uploaded image to a generated species reference profile
    for species available at the selected station.
 12. If a station species is matched, the app saves a `Matched` observation and

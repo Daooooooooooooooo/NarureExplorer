@@ -53,7 +53,7 @@ mission card, and locally saved successful check-ins.
 ## Page Split Pass
 
 The app now uses separate static HTML pages for Home, Map, Area Detail,
-NatureDex, Camera / Upload, Records, and Species Detail. Shared state remains in
+NatureDex, inline species upload, Records, and Species Detail. Shared state remains in
 browser `localStorage`, and shared rendering logic remains in `src/app.js`.
 
 ## Reference Style Pass
@@ -83,7 +83,7 @@ station instead of showing every species at once.
 
 ## Generated Photo Matching Pass
 
-The upload flow now requires a user photo, compares the suspected species
+The species card upload flow now requires a user photo, compares the suspected species
 against generated reference profiles for the selected station, stores successful
 matches as `Matched` observations, and shows a tick symbol on matched species
 cards at that station. This remains a local MVP simulation, not a trained image

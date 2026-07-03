@@ -781,29 +781,6 @@ form {
   font-weight: 900;
 }
 
-.photo-preview,
-.photo-check-result {
-  border: 2px solid rgba(255, 255, 255, 0.25);
-  border-radius: 18px;
-  padding: 0.75rem;
-  color: #ffffff;
-  background-color: rgba(255, 255, 255, 0.1);
-  background-position: center;
-  background-size: cover;
-  font-weight: 800;
-}
-
-.photo-preview {
-  min-height: 110px;
-  display: grid;
-  place-items: center;
-}
-
-.photo-check-result {
-  border-color: rgba(255, 231, 122, 0.55);
-  background: rgba(255, 231, 122, 0.14);
-}
-
 .match-tick {
   position: absolute;
   top: 0.75rem;
@@ -820,6 +797,33 @@ form {
   box-shadow: 0 0 18px rgba(53, 208, 111, 0.8), 0 5px 0 #0d5a36;
   font-size: 1.55rem;
   font-weight: 900;
+}
+
+.species-upload-form {
+  margin-top: 0.85rem;
+  border-width: 3px;
+  border-radius: 18px;
+  padding: 0.75rem;
+  gap: 0.55rem;
+}
+
+.species-upload-form label {
+  color: #ffffff;
+}
+
+.species-upload-form input {
+  width: 100%;
+  margin-top: 0.35rem;
+}
+
+.species-upload-form button {
+  width: 100%;
+}
+
+.inline-upload-status {
+  margin: 0;
+  color: #fff7c2;
+  font-size: 0.9rem;
 }
 
 input,

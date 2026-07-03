@@ -102,13 +102,6 @@ const checkInButton = document.querySelector("#checkInButton");
 const checkInStatus = document.querySelector("#checkInStatus");
 const areaFilter = document.querySelector("#areaFilter");
 const speciesList = document.querySelector("#speciesList");
-const observationForm = document.querySelector("#observationForm");
-const photoInput = document.querySelector("#photoInput");
-const photoPreview = document.querySelector("#photoPreview");
-const photoCheckResult = document.querySelector("#photoCheckResult");
-const observationArea = document.querySelector("#observationArea");
-const speciesSelect = document.querySelector("#speciesSelect");
-const formError = document.querySelector("#formError");
 const totalFound = document.querySelector("#totalFound");
 const areaSummary = document.querySelector("#areaSummary");
 const groupSummary = document.querySelector("#groupSummary");
@@ -128,17 +121,7 @@ if (areaFilter) {
   areaFilter.addEventListener("change", renderSpecies);
 }
 
-if (observationArea) {
-  observationArea.addEventListener("change", syncSpeciesSelect);
-}
-
-if (observationForm) {
-  observationForm.addEventListener("submit", saveObservation);
-}
-
-if (photoInput) {
-  photoInput.addEventListener("change", previewUploadedPhoto);
-}
+document.addEventListener("submit", saveInlineSpeciesPhoto);
 
 render();
 
@@ -235,27 +218,6 @@ function renderSelects() {
       .join("");
     areaFilter.value = currentFilter;
   }
-
-  if (observationArea) {
-    const currentObservationArea = observationArea.value || selectedSite.id;
-    observationArea.innerHTML = sites
-      .map((site) => `<option value="${site.id}">${site.name}</option>`)
-      .join("");
-    observationArea.value = currentObservationArea;
-    syncSpeciesSelect();
-  }
-}
-
-function syncSpeciesSelect() {
-  if (!observationArea || !speciesSelect) {
-    return;
-  }
-
-  const areaSpecies = getSpeciesForSite(observationArea.value);
-  const choices = areaSpecies.length > 0 ? areaSpecies : species;
-  speciesSelect.innerHTML = choices
-    .map((item) => `<option value="${item.commonName}">${item.commonName}</option>`)
-    .join("");
 }
 
 function renderSpecies() {
@@ -290,6 +252,14 @@ function renderSpecies() {
       <a class="button-link" href="species.html?species=${encodeURIComponent(item.commonName)}">
         View Detail
       </a>
+      <form class="species-upload-form" data-species-id="${item.id}" data-station-id="${selectedStationId}">
+        <label>
+          Upload photo
+          <input name="speciesPhoto" type="file" accept="image/*">
+        </label>
+        <button type="submit">Check Photo</button>
+        <p class="inline-upload-status" aria-live="polite">No photo checked yet.</p>
+      </form>
     `;
 
     speciesList.appendChild(card);
@@ -333,71 +303,56 @@ function renderSpeciesDetail(item) {
       <dt>Source</dt>
       <dd><a href="${item.sourceUrl}" target="_blank" rel="noreferrer">Open source</a></dd>
     </dl>
-    <a class="button-link" href="upload.html">I Found This!</a>
+    <a class="button-link" href="naturedex.html">Find This In NatureDex</a>
   `;
 }
 
-function saveObservation(event) {
-  event.preventDefault();
-  formError.style.display = "none";
-
-  if (!speciesSelect.value) {
-    formError.textContent = "Choose a suspected species before saving.";
-    formError.style.display = "block";
+function saveInlineSpeciesPhoto(event) {
+  if (!event.target.classList.contains("species-upload-form")) {
     return;
   }
 
-  const chosenSpecies = species.find((item) => item.commonName === speciesSelect.value);
-  const stationId = observationArea.value;
-  const uploadedPhoto = photoInput && photoInput.files.length > 0 ? photoInput.files[0] : null;
+  event.preventDefault();
+
+  const form = event.target;
+  const status = form.querySelector(".inline-upload-status");
+  const fileInput = form.querySelector('input[name="speciesPhoto"]');
+  const item = species.find((speciesItem) => speciesItem.id === form.dataset.speciesId);
+  const stationId = form.dataset.stationId;
+  const uploadedPhoto = fileInput && fileInput.files.length > 0 ? fileInput.files[0] : null;
+
+  if (!item || !stationId) {
+    status.textContent = "This species card is missing station data.";
+    return;
+  }
 
   if (!uploadedPhoto) {
-    formError.textContent = "Upload a photo before running the generated-photo check.";
-    formError.style.display = "block";
+    status.textContent = "Upload a photo before running the generated-photo check.";
     return;
   }
 
-  const matchResult = compareUploadedPhotoToGeneratedReference(
-    uploadedPhoto,
-    chosenSpecies,
-    stationId
-  );
+  const matchResult = compareUploadedPhotoToGeneratedReference(uploadedPhoto, item, stationId);
 
   if (!matchResult.found) {
-    formError.textContent = matchResult.message;
-    formError.style.display = "block";
-    if (photoCheckResult) {
-      photoCheckResult.textContent = matchResult.message;
-    }
+    status.textContent = matchResult.message;
     return;
   }
 
-  const record = {
+  observations.unshift({
     area: getSiteName(stationId),
-    species: chosenSpecies.commonName,
-    group: chosenSpecies.group,
+    species: item.commonName,
+    group: item.group,
     status: "Matched",
     confidence: `${matchResult.confidence}%`,
     referenceProfile: matchResult.profile.label,
     date: new Date().toLocaleDateString()
-  };
-
-  observations.unshift(record);
+  });
   localStorage.setItem("natureExplorerObservations", JSON.stringify(observations));
-  observationForm.reset();
-  observationArea.value = stationId;
-  syncSpeciesSelect();
-  if (photoPreview) {
-    photoPreview.textContent = "No photo selected yet.";
-    photoPreview.style.backgroundImage = "";
-  }
-  if (photoCheckResult) {
-    photoCheckResult.textContent = `Matched ${chosenSpecies.commonName} at ${getSiteName(
-      stationId
-    )} with ${matchResult.confidence}% confidence. Tick added to that station species card.`;
-  }
-  formError.textContent = "Photo matched and observation saved. Open Records to see it in the table.";
-  formError.style.display = "block";
+  status.textContent = `Matched ${item.commonName} with ${matchResult.confidence}% confidence. Tick added.`;
+  form.reset();
+  renderRecords();
+  renderHomeStats();
+  renderSpecies();
 }
 
 function renderRecords() {
@@ -527,18 +482,6 @@ function isMatchedAtStation(commonName, stationId) {
 
 function isFoundStatus(status) {
   return status === "Unlocked" || status === "Matched";
-}
-
-function previewUploadedPhoto() {
-  if (!photoPreview || !photoInput || photoInput.files.length === 0) {
-    return;
-  }
-
-  const file = photoInput.files[0];
-  photoPreview.textContent = file.name;
-  photoPreview.style.backgroundImage = `linear-gradient(rgba(4, 34, 38, 0.25), rgba(4, 34, 38, 0.25)), url("${URL.createObjectURL(
-    file
-  )}")`;
 }
 
 function compareUploadedPhotoToGeneratedReference(file, item, stationId) {

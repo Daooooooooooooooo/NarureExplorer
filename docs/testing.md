@@ -12,7 +12,6 @@ Open `src/index.html` in a web browser, then use the navigation links for:
 - Station: `src/map.html`
 - Area Detail: `src/area.html`
 - NatureDex: `src/naturedex.html`
-- Camera / Upload: `src/upload.html`
 - Records: `src/records.html`
 - Species Detail: `src/species.html`
 
@@ -71,8 +70,8 @@ For multi-step tasks, use a short plan:
 - Confirming browser location on Home automatically opens Area Detail for the
   nearest sample station.
 - Station and Area Detail views show only species connected to the selected station.
-- Upload requires a photo and checks it against generated references for species
-  at the selected station.
+- Each species card has an upload control that requires a photo and checks it
+  against generated references for that species at the selected station.
 - A matched photo saves a `Matched` observation and shows a tick on that species
   card for the station.
 - Pages use the cartoon-adventure visual style with numbered panels and rounded
